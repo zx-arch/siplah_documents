@@ -20,10 +20,13 @@ Route::get('/', function () {
 });
 
 Route::get('/pembatalan_transaksi', [PembatalanTransaksiController::class, 'index']);
+Route::post('/pembatalan_transaksi', [PembatalanTransaksiController::class, 'index']);
 Route::post('/pembatalan_transaksi/download', [PembatalanTransaksiController::class, 'download']);
 Route::post('/pembatalan_transaksi/upload/surat_pembatalan_transaksi', [PembatalanTransaksiController::class, 'upload']);
 Route::post('pembatalan_transaksi/download_document_upload', [PembatalanTransaksiController::class, 'DownloadDocumentUpload']);
 Route::get('pembatalan_transaksi/delete/{user}/{kode_document}', [PembatalanTransaksiController::class, 'deleteTemporary']);
+Route::post('pembatalan_transaksi/sorting', [PembatalanTransaksiController::class, 'index']);
+Route::post('pembatalan_transaksi/update/{id}/{kode_document}', [PembatalanTransaksiController::class, 'update']);
 
 Route::get('trash', [TrashController::class, 'index']);
 Route::get('trash/delete/{user}/{kode_document}', [TrashController::class, 'deletePermanent']);

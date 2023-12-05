@@ -18,9 +18,11 @@
                                 <thead>
                                     <tr>
                                         <td>No</td>
-                                        <td data-col-seq="1">Kode Transaksi</td>
+                                        <td data-col-seq="1">Kode Document</td>
                                         <td data-col-seq="2">Nama Document</td>
                                         <td data-col-seq="3">Tanggal Dibuat</td>
+                                        <td data-col-seq="3">Tanggal Update</td>
+                                        <td data-col-seq="3">Tanggal Dihapus</td>
                                         <td data-col-seq="3">Action</td>
                                     </tr>
                                 </thead>
@@ -33,6 +35,8 @@
                                             <td>{{$check->kode_document}}</td>
                                             <td>{{$check->nama_document}}</td>
                                             <td>{{$check->created_at}}</td>
+                                            <td>{{$check->updated_at}}</td>
+                                            <td>{{$check->deleted_at}}</td>
                                             <form action="{{url('trash/restore')}}" method="post">
                                                 @csrf
                                                 <input type="hidden" name="id" value="{{$check->id}}">
