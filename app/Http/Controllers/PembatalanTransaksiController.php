@@ -27,9 +27,8 @@ class PembatalanTransaksiController extends Controller
             Session::put('tanggal_mulai', $request->tanggal_mulai);
             Session::put('tanggal_akhir', $request->tanggal_akhir);
 
-
             if ($request->sorting == 'document_terbaru') {
-                $getdata = PembatalanTransaksiModel::select('id', 'kode_document', 'user', 'nama_document', 'created_at')->where('deleted_at', '=', null)->orderBy('created_at', 'desc')->take(75)->get();
+                $getdata = PembatalanTransaksiModel::select('id', 'kode_document', 'user', 'nama_document', 'created_at', 'updated_at')->where('deleted_at', '=', null)->orderBy('created_at', 'desc')->take(75)->get();
                 Session::put('sorting', $request->sorting);
             }
 
