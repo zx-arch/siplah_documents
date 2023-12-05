@@ -16,10 +16,11 @@ class PembatalanTransaksiController extends Controller
         } else {
             if ($request->tanggal_akhir == '') {
                 $request->tanggal_akhir = $request->tanggal_mulai;
-            }
 
-            $getdata = PembatalanTransaksiModel::select('id', 'kode_document', 'user', 'nama_document', 'created_at')->where('deleted_at', '=', null)->where('created_at', '>=', $request->tanggal_mulai . ' 00:00:00')->where('created_at', '<=', $request->tanggal_akhir . ' 23:59:59')->take(75)->get();
-            //dd($getdata);
+                $getdata = PembatalanTransaksiModel::select('id', 'kode_document', 'user', 'nama_document', 'created_at', 'updated_at')->where('deleted_at', '=', null)->where('created_at', '>=', $request->tanggal_mulai . ' 00:00:00')->take(75)->get();
+            } else {
+                $getdata = PembatalanTransaksiModel::select('id', 'kode_document', 'user', 'nama_document', 'created_at', 'updated_at')->where('deleted_at', '=', null)->where('created_at', '>=', $request->tanggal_mulai . ' 00:00:00')->where('created_at', '<=', $request->tanggal_akhir . ' 23:59:59')->take(75)->get();
+            }
 
             if ($request->tanggal_akhir == $request->tanggal_mulai) {
                 $request->tanggal_akhir = '';
