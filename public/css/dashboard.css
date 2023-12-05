@@ -1,0 +1,293 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background-color: #fff;
+}
+
+.bg-success,
+.bg-success:hover,
+.bg-success:active,
+.bg-success:visited {
+    background-color: #70da50 !important;
+    color: #100901;
+    border: #70da50;
+}
+
+.bg-danger,
+.bg-danger:hover,
+.bg-danger:active,
+.bg-danger:visited {
+    background-color: #e95d58 !important;
+}
+
+.side-navbar {
+    width: 230px;
+    height: 100%;
+    position: fixed;
+    margin-left: -300px;
+    background-color: #100901;
+    transition: 0.5s;
+}
+
+.nav-link:active,
+.nav-link:focus,
+.nav-link:hover {
+    background-color: #ffffff26;
+}
+
+.my-container {
+    transition: 0.4s;
+}
+
+.active-nav {
+    margin-left: 0;
+}
+
+/* for main section */
+.active-cont {
+    margin-left: 230px;
+}
+
+#menu-btn {
+    background-color: #100901;
+    color: #fff;
+    margin-left: -62px;
+}
+
+.my-container input {
+    border-radius: 2rem;
+    padding: 2px 20px;
+}
+
+.img-profil {
+    position: relative;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 40% solid black;
+}
+
+.img-profil img {
+    border-radius: 50%;
+}
+
+.card-noted {
+    width: 18rem; 
+    margin-top: 8px; 
+    margin-bottom: 25px; 
+    float: right; 
+    position: relative; 
+    right:10%;
+}
+
+@media (max-width: 1309px) {
+    .card-noted {
+        width: 18rem; 
+        margin-top: 10px; 
+        margin-bottom: 10px; 
+        float: left; 
+        left: 0;
+    }
+}
+
+@media (max-width: 1450px) {
+    .card-noted {
+        width: 18rem; 
+        margin-top: 10px; 
+        margin-bottom: 10px; 
+        left: 0;
+        float: unset;
+    }
+    #piechart {
+        top: 0;
+        left: 0;
+        position: static;
+        display: block;
+    }
+    
+}
+
+.red-text {
+    color: red;
+}
+
+.wrapper {
+    position: absolute;
+    left: 40%;
+    top:0;
+    width: 450px;
+    background: #fff;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.05);
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+.wrapper header {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    position: relative;
+}
+
+header label {
+    height: 100%;
+    z-index: 2;
+    width: 30%;
+    display: flex;
+    cursor: pointer;
+    font-size: 18px;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease;
+}
+
+#tab-1:checked~header .tab-1,
+#tab-2:checked~header .tab-2,
+#tab-3:checked~header .tab-3 {
+    color: #fff;
+}
+
+header label:nth-child(2) {
+    width: 40%;
+}
+
+header .slider {
+    position: absolute;
+    height: 85%;
+    border-radius: inherit;
+    background: linear-gradient(145deg, #D5A3FF 0%, #77A5F8 100%);
+    transition: all 0.3s ease;
+}
+
+#tab-1:checked~header .slider {
+    left: 0%;
+    width: 100px;
+    transform: translateX(8%);
+}
+
+#tab-2:checked~header .slider {
+    left: 50%;
+    width: 150px;
+    transform: translateX(-50%);
+}
+
+#tab-3:checked~header .slider {
+    left: 99%;
+    width: 100px;
+    transform: translateX(-105%);
+}
+
+.wrapper input[type="radio"] {
+    display: none;
+}
+
+.card-area {
+    overflow: hidden;
+}
+
+.card-area .cards {
+    display: flex;
+    width: 300%;
+}
+
+.cards .row {
+    width: 33.4%;
+}
+
+.cards .row-1 {
+    transition: all 0.3s ease;
+}
+
+#tab-1:checked~.card-area .cards .row-1 {
+    margin-left: 0%;
+}
+
+#tab-2:checked~.card-area .cards .row-1 {
+    margin-left: -31.4%;
+}
+
+#tab-3:checked~.card-area .cards .row-1 {
+    margin-left: -62.8%;
+}
+
+
+.row .title {
+    margin: 20px 0;
+    text-align: center;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.title {
+    font-size: 65px;
+    font-weight: 600;
+    position: relative;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.title p {
+    font-size: 18px;
+    margin-top: 5px;
+}
+
+.row .features li {
+    display: flex;
+    font-size: 15px;
+    list-style: none;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.features li i {
+    background: linear-gradient(#D5A3FF 0%, #77A5F8 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.features li span {
+    margin-left: 10px;
+}
+
+.wrapper button {
+    width: 100%;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    height: 50px;
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+    margin-top: 20px;
+    background: linear-gradient(145deg, #D5A3FF 0%, #77A5F8 100%);
+    transition: transform 0.3s ease;
+}
+
+.wrapper button:hover {
+    transform: scale(0.98);
+}
+
+#pdfFile {
+            display: none;
+        }
+
+        /* Gaya tombol yang disesuaikan */
+        #customButton {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
