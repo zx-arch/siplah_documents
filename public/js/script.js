@@ -91,6 +91,19 @@ document.addEventListener('DOMContentLoaded', function () {
                 const myfile = e.target.files;
                 const reader = new FileReader();
 
+                const allowedTypes = ['application/pdf'];
+                if (!allowedTypes.includes(file.type)) {
+                    Swal.fire('Error!', 'Jenis file tidak diijinkan', 'error');
+                    return;
+                }
+
+                // Pengecekan ukuran file
+                const maxSize = 307200;
+                if (file.size > maxSize) {
+                    Swal.fire('Error!', 'Ukuran PDF minimal 300 KB', 'error');
+                    return;
+                }
+
                 reader.onload = function (e) {
                     Swal.fire({
                         title: 'Your uploaded document',
