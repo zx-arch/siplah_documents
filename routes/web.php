@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PembatalanTransaksiController;
 use App\Http\Controllers\TrashController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,8 +17,17 @@ use App\Http\Controllers\TrashController;
 */
 
 Route::get('/', function () {
-    return view('documents.home');
+    if (Session::has('status_login')) {
+        return view('documents.home');
+    } else {
+        return redirect('/login');
+    }
 });
+
+Route::get('/login', [LoginController::class, 'index']);
+Route::post('/login', [LoginController::class, 'submit']);
+
+Route::post('/system/logout', [LoginController::class, 'logout']);
 
 Route::get('/pembatalan_transaksi', [PembatalanTransaksiController::class, 'index']);
 Route::post('/pembatalan_transaksi', [PembatalanTransaksiController::class, 'index']);

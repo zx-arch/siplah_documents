@@ -24,7 +24,7 @@
                                     <span class="error_document text-danger p-2 mb-1"></span>
                                 </div>
 
-                                <img id="pdfPreview" src="#" alt="Preview PDF" class="mb-2" style="max-width: 100%; display: none;" width="100">
+                                <img id="pdfPreview" src="{{asset('img/pdf_icon.png')}}" alt="Preview PDF" class="mb-1" style="max-width: 100%; display: none;" width="100">
                                 <p id="filename" style="display: none;"></p>
 
                                 @if (Session::has('add_type_invalid'))
@@ -159,14 +159,14 @@
                                             <td>{{$get->updated_at}}</td>
                                             <form action="{{url('pembatalan_transaksi/download_document_upload')}}" method="post">
                                                 @csrf
-                                                <input type="hidden" name="user" value="{{$get->user}}">
+                                                <input type="hidden" name="username" value="{{$get->username}}">
                                                 <input type="hidden" name="kode_document" value="{{$get->kode_document}}">
                                                 <td>
                                                     <button type="submit" class="btn btn-warning"><i class='bx bxs-download'></i> </button>
                                                     
                                                     <a href="#" class="btn btn-secondary update_document" data-csrf = "{{csrf_token()}}" data-id="{{ $get->id }}" data-kode-document="{{ $get->kode_document }}" data-img = "{{asset('img/pdf_icon.png')}}"><i class='bx bx-edit'></i> </a>
                                                     
-                                                    <a href="#" class="btn btn-danger deletetemporary" data-user="{{ $get->user }}" data-kode-document="{{ $get->kode_document }}"><i class='bx bx-trash'></i> </a>
+                                                    <a href="#" class="btn btn-danger deletetemporary" data-username="{{ $get->username }}" data-kode-document="{{ $get->kode_document }}"><i class='bx bx-trash'></i> </a>
                                                 </td>
                                             </form>
                                         </tr>

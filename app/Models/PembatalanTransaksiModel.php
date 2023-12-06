@@ -12,7 +12,7 @@ class PembatalanTransaksiModel extends Model
     protected $fillable = [
         'id',
         'kode_document',
-        'user',
+        'username',
         'nama_document',
         'file'
     ];
@@ -22,10 +22,9 @@ class PembatalanTransaksiModel extends Model
     {
         parent::boot();
 
-        // Event creating akan dipanggil sebelum data disimpan ke database
         static::creating(function ($model) {
-            // Mengambil nomor urut terakhir + 1
-            $lastNumber = static::max('kode_document');
+            // Mendapatkan username sebelumnya
+            $lastNumber = static::where('username', $model->username)->max('kode_document');
             $number = ($lastNumber) ? (int) str_replace('SKPT-', '', $lastNumber) + 1 : 1;
 
             // Format kode_document sesuai kebutuhan
@@ -33,11 +32,12 @@ class PembatalanTransaksiModel extends Model
         });
     }
 
-    public static function deleteTemporary($user, $kode_document)
+
+    public static function deleteTemporary($username, $kode_document)
     {
         // Gunakan metode delete untuk menghapus data berdasarkan kondisi
         return static::where('kode_document', $kode_document)
-            ->where('user', $user)
+            ->where('username', $username)
             ->delete();
     }
 

@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Mendapatkan elemen pratinjau gambar
     const pdfPreview = document.getElementById('pdfPreview');
     const filename = document.getElementById('filename');
+    const coverpdf = pdfPreview.getAttribute('data-img');
 
     document.getElementById('sorting').addEventListener('change', function (e) {
         if (e.target.value == 'document_terlama') {
@@ -30,7 +31,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     pdfPreview.style.display = 'block';
                     filename.style.display = 'block';
                     filename.innerHTML = selectedFile.name;
-                    pdfPreview.src = "{{ asset('img/pdf_icon.png')}}";
                 };
                 reader.readAsDataURL(selectedFile);
             } else {
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
     deleteButtons.forEach(function (button) {
         button.addEventListener('click', function (event) {
             event.preventDefault();
-            const user = this.getAttribute('data-user');
+            const username = this.getAttribute('data-username');
             const kodeDocument = this.getAttribute('data-kode-document');
             Swal.fire({
                 title: 'Ingin menghapus data?',
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         'Data berhasil dihapus',
                         'success'
                     )
-                    window.location.href = `{{ url('pembatalan_transaksi/delete') }}/${user}/${kodeDocument}`;
+                    window.location.href = `pembatalan_transaksi/delete/${username}/${kodeDocument}`;
                 }
             })
         });
